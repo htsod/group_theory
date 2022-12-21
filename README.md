@@ -2,20 +2,20 @@
 Max Liang
 created 12/21/2022
 ### Description
-*Theory background*
+-*Theory background*
 
 Generate n discrete group with user specifying the value of n
 
-*Method*
+-*Method*
 
-*IO*
+-*IO*
 
 ### User Manual
-*Images*
-*Explaination*
+-*Images*
+-*Explaination*
 
 ### Developer Manual
-*Optimization*
+-*Optimization*
 
 
 ### Reference
