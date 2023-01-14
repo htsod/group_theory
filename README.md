@@ -10,6 +10,8 @@ Generate n discrete group with user specifying the value of n
 
 -*Method*
 
+Using the once and only once rule to generate the group table in n dimensions.
+
 -*IO*
 
 ### User Manual
