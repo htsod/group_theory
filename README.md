@@ -2,8 +2,6 @@
 Max Liang
 created 12/21/2022
 
-Max Liang
-edited 01/13/2022
 
 ### Description
 -*Theory background*
