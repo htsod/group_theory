@@ -9,6 +9,15 @@
 class node:
     def __init__(self, n):
         """
+        Description:
+            "self.item" stores all dynamic information, it gets modified as the mult table get generated
+            "self.n" tells the order of the group
+            "self.branch" is being used when there is more than one way to update the mult table
+            "self.gen" step forward when the modification to the current indices, "self.i" and "self.j" finished
+            "self.i" tells the i indices of the mult table
+            "self.j" tells the j indices of the mult table
+            "self.state" stops the recursion when "self.i" and "self.j" reaches the limit
+
         :param n: the dimensions of the group
         """
         # self.item is being used to hold the multiplication table
@@ -23,14 +32,18 @@ class node:
 
 
     def get_stat(self):
-        """Print the state of the object node, is being used for debug purposes"""
+        """
+        Description:
+            Print the state of the object node, is being used for debug purposes
+        """
         print(f"the current generation is {self.gen + 1} \nwith total {self.branches} branches \nthe indexes are ({self.i}, {self.j})")
 
 
     def _update(self):
         """
-        Update i, j index if the state of the system is false.
-        The state will turn false if certain conditions are met
+        Description:
+            Update i, j index if the state of the system is false.
+            The state will turn false if certain conditions are met
         """
         if self.j < (self.n - 1):
             self.j += 1
@@ -115,7 +128,7 @@ class node:
         # print the current generation
         # print(self.item[self.gen])
         if self.state == False:
-            return self.item
+            pass
         else:
             return self.edge()
 
