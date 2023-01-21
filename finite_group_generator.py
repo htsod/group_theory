@@ -6,7 +6,6 @@
 # Using nodal network to model the branching of multiplication table
 # Using recursion to generate the full branches
 
-# node function as
 class node:
     def __init__(self, n):
         """
@@ -73,26 +72,21 @@ class node:
             Generate branches for index i, j and update stats to next generation
         """
         next_gen = []
-        mult_list = []
 
         # if element either i or j is the identity, then fill the current spot with j or i.
         if self.i == 0:
-            mult_list.append(self.j)
             for b in range(self.branches):
                 clone = self.item[self.gen][b].copy()
-                clone[self.i][self.j] = mult_list[0]
+                clone[self.i][self.j] = self.j
                 next_gen.append(clone)
-            self.branches = self.branches
             
         elif self.j == 0:
-            mult_list.append(self.i)
             for b in range(self.branches):
                 clone = self.item[self.gen][b].copy()
-                clone[self.i][self.j] = mult_list[0]
+                clone[self.i][self.j] = self.i
                 next_gen.append(clone)
-            self.branches = self.branches
 
-        #
+        # if not an identity, carry out the multiplication rule
         else:
             new_branch = 0
             for b in range(self.branches):
@@ -114,9 +108,12 @@ class node:
 
     def edge(self):
         """Runs self.edge() recursively until i, j indexes are out of bound"""
-        self.get_stat()
         self.item.append(self._mult())
-        print(self.state)
+        # The following command is for debugging purposes
+        # get the statistic for each generation
+        # self.get_stat()
+        # print the current generation
+        # print(self.item[self.gen])
         if self.state == False:
             return self.item
         else:
@@ -125,5 +122,5 @@ class node:
 
 dim = int(input("Enter an positive integer: "))
 g = node(dim)
-mult_table = g.edge()
-print(mult_table)
+g.edge()
+print(f"The unique groups generated are: \n{g.item[g.gen]}")
