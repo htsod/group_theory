@@ -6,7 +6,10 @@
 # Using nodal network to model the branching of multiplication table
 # Using recursion to generate the full branches
 
-class node:
+import numpy as np
+
+
+class finite_group:
     def __init__(self, n):
         """
         Description:
@@ -133,7 +136,46 @@ class node:
             return self.edge()
 
 
+    def associative_check(self):
+        """Check the associativity of each group generated and remove table that fail the conditions"""
+        need_remove = [0 for i in range(len(self.item[self.gen]))]
+        current_item = self.item[self.gen].copy()
+        index = 0
+        for t in current_item:
+            for i in range(self.n):
+                for j in range(self.n):
+                    for k in range(self.n):
+                        break_out_flag_1, break_out_flag_2, break_out_flag_3 = False, False, False
+                        if (i != j) and (j != k) and (i != k):
+                            j_k = t[j][k]
+                            ii = t[i][j_k]
+                            i_j = t[i][j]
+                            kk = t[i_j][k]
+                            # if the associativity test fails
+                            if ii != kk:
+                                break_out_flag_1 = True
+                                break
+                    if break_out_flag_1:
+                        break_out_flag_2 = True
+                        break
+                if break_out_flag_2:
+                    need_remove[index] = 1
+                    break
+            index += 1
+
+        if (np.array(need_remove).sum()) != 0:
+            for i, j in enumerate(need_remove):
+                if j:
+                    current_item.remove(self.item[self.gen][i])
+        self.item[self.gen] = current_item
+
+
+
+
+
 dim = int(input("Enter an positive integer: "))
-g = node(dim)
+g = finite_group(dim)
 g.edge()
-print(f"The unique groups generated are: \n{g.item[g.gen]}")
+g.associative_check()
+print(f"The groups generated are: \n{g.item[g.gen]} \n With {len(g.item[g.gen])} generated groups")
+
