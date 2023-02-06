@@ -6,6 +6,7 @@
 # Using nodal network to model the branching of multiplication table
 # Using recursion to generate the full branches
 
+
 import numpy as np
 
 

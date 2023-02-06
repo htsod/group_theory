@@ -4,22 +4,8 @@ created 12/21/2022
 
 
 ### Description
--*Theory background*
-
-Generate n discrete group with user specifying the value of n
-
--*Method*
-
-Using the once and only once rule to generate the group table in n dimensions.
-
--*IO*
-
-### User Manual
--*Images*
--*Explaination*
-
-### Developer Manual
--*Optimization*
+Group theory is a powerful mathematical tool that is being used in theoretical physics, physical chemistry and other 
+scientific field. This project will be a tentative attempt to create a math module to tackle problems with symmetries.
 
 
 ### Reference
